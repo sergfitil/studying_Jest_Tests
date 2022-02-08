@@ -1,0 +1,59 @@
+Работа с тестами в консоли
+Перед установкой
+Командой npx -v убедись, что у тебя установлен npx. Если нет,
+ то установи его командой npm install -g npx или sudo npm install -g npx.
+
+Установка
+Если проект новый, то инициализируй файл package.json командой npm init -y
+
+Установи jest в devDependencies: npm install -D jest
+
+В корне проекта создай папку spec.
+
+Добавьте следующий раздел в package.json:
+
+"scripts": {
+  "test": "jest -i"
+}
+О расширенной настройке Jest можно почитать:
+ https://jestjs.io/docs/en/getting-started#additional-configuration
+
+npx create-gitignore node        не пушить папку node_models
+
+Запуск тестов
+Для запуска тестов достаточно выполнить команду npm test или npx jest в терминале,
+находясь в корне своего проекта.
+
+Основные методы Jest:
+
+describe(description, specDefinitions) - Создаёт группу тестов. 
+Вызовы метода describe могут вкладываться друг в друга,
+что позволяет создавать подгруппы тестов.
+
+beforeEach(functionopt, timeoutopt) - Метод,
+код внутри которого будет запускаться перед запуском каждого теста(test или it). 
+Таким образом, тут можно задавать значения переменных, необходимые для тестов, 
+подготавливать БД, и тд.
+
+test(description, testFunctionopt, timeoutopt) Определяет тест(или spec). 
+Тест должен содержать 1 или более вызовов метода expect 
+(ожидания от работы вашего кода). 
+
+Если все вызовы expect внутри test успешны - тесты пройдут, иначе выдадут ошибку.
+expect(actual) → {matchers}
+Создаёт ожидание для теста.
+Например: expect(sum(2,3)).toEqual(5) - ожидается,
+что результат вызова метода sum с аргументами 2 и 3 будет равен 5.
+То есть 2+3=5. matchers - то что ожидается (toEqual(5), toBeFalsy(),
+ 
+Для старта может быть полезна: https://habr.com/ru/post/502302/
+
+Советуем также ознакомиться с JEST : https://www.youtube.com/watch?v=9g4tsfIJz50
+ 
+Ближе познакомиться с методами можно :  https://jestjs.io/docs/en/api#describename-fn
+
+Документация https://jestjs.io/docs/en/getting-started
+
+Пример https://github.com/sergfitil/manuals-jasmine-node-example
+
+studying_Jest_Tests
